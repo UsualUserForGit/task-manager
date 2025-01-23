@@ -30,12 +30,10 @@ php artisan key:generate
 
 6. Данные для БД:
 
-DB_CONNECTION=mysql
-DB_HOST=sql.freedb.tech
-DB_PORT=3306
-DB_DATABASE=freedb_task_manager_db
-DB_USERNAME=freedb_usual_user
-DB_PASSWORD=gKS5j$WgE47rXaJ
+Сервер : sql.freedb.tech:3306
+Пользователь : freedb_usual_user
+Пароль : gKS5j$WgE47rXaJ
+БД : freedb_task_manager_db
 
 7. Выполняем миграции для создания таблиц в базе данных
 
@@ -56,11 +54,22 @@ php artisan l5-swagger:generate
 ```
 ###### Она будет по адресу - http://your_local_api/api/documentation
 
-
-```bash
-Orders data fetched successfully
-```
-
 ###### Название единственной таблицы
 
 - `tasks`
+
+10. Собрать и запустить проект в докере
+
+```bash
+docker-compose up --build
+```
+
+11. Запустить миграции внутри контейнера
+
+```bash
+docker exec -it laravel_app bash
+```
+
+```bash
+php artisan migrate
+```
